@@ -2,7 +2,6 @@
 
 This readme explains the funciton of each of the uploaded files.
 > - **bbox_to_yolo_format.py** file converts the annotations to the format desired by yolo
-<br>
 > - **process.py** file creates the files train_dogs.txt and test_dogs.txt for training and validation data
 <br>
 > - **dog.names** this stores names of all classes to be trained in the model. In this case it contains single class - 'dog'
