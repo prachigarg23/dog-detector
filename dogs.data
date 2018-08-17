@@ -1,0 +1,5 @@
+classes= 1
+train  = /Users/prachigarg/Documents/darknet/train_dogs.txt
+valid  = /Users/prachigarg/Documents/darknet/test_dogs.txt
+names = /Users/prachigarg/Documents/darknet/cfg/dog.names
+backup = /Users/prachigarg/Documents/darknet/backup
