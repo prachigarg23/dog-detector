@@ -1,6 +1,7 @@
 # dog-detector
 
 This readme explains the function of each of the uploaded files.
+> - **DOG-DETECTION.pdf** This file explains the procedure followed to train YOLO on the dogs dataset.
 > - **test_sample_images** folder contains the test images 
 > - **bbox_to_yolo_format.py** file converts the annotations to the format desired by yolo
 > - **process.py** file creates the files train_dogs.txt and test_dogs.txt for training and validation data
