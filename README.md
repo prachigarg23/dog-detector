@@ -46,14 +46,17 @@ Other changes required are to the classes and filters specifications:
 <br>
 TRAINING
 For training we use convolutional weights that are pre-trained YOLO on Imagenet. We use weights from the Extraction model, i.e. darknet19_448.conv.23. 
-Based on the paths to the various files, the command would be something like this: `./darknet detector train cfg/dogs.data cfg/dogs.cfg darknet19_448.conv.23`
+Based on the paths to the various files, the command would be something like this: 
+.`/darknet detector train cfg/dogs.data cfg/dogs.cfg darknet19_448.conv.23`
 
 - Here we basically pass all the parameters (that the function train_detector requires). `train_detector()` is present in examples/detector.c/
 - similarly for testing, we pass the above parameters and pass the image file 
 - we can also need to pass a threshold otherwise all bounding boxes would be displayed 
 
 <br> 
-Scope For possible errors
+
+Scope for possible errors
+
 - The dataset images size should be greater than or equal to 416x416 (which is the size of input images as used by Yolo cfg file). If it isn't the training will not give any b-boxes. It might also show nan and IOU will be very less due to this reason. In this case, the average loss will come down drastically but the model won't learn anything.
 - the annotations should be correct
 - the images should have .jpg file extension
@@ -63,6 +66,7 @@ Scope For possible errors
 - if training on CPU, use batch_size=1
 
 <br>
+
 The function of each file in this repository:
 > - **test_sample_images** folder contains the test images 
 > - **bbox_to_yolo_format.py** file converts the annotations to the format desired by yolo
