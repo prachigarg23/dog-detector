@@ -1,8 +1,8 @@
 # YOLO object detection for a single object 
 ## Training a dog detector on custom dataset using transfer learning on YOLO - absolute beginner tutorial
-Created 2018
+Created in 2018
 
-To get Darknet YOLO training to work, we need the following files:
+#### To get Darknet YOLO training to work, we need the following files:
 - Object bounding box file for each image (.txt)
 - Class name file for all the category names (.names)
 - Training dataset file for the list of training images (train.txt)
@@ -12,7 +12,7 @@ To get Darknet YOLO training to work, we need the following files:
 
 <br>
 
-STEPS TO FOLLOW:
+#### STEPS TO FOLLOW:
 1. Obtain the dataset - I created a dataset of 248 images of dogs and other random pictures.
 2. Use B-BOX LABELLING TOOL to label the dogs in the images and get annotations in the format: `[top-left-x] [top-left-y] [bottom-right-x] [bottom-right-y]`
 3. YOLO needs the annotations the format: `[object-class-id] [centre-x] [centre-y] [width] [height]`
@@ -45,7 +45,7 @@ Other changes required are to the classes and filters specifications:
 
 <br>
 
-TRAINING
+#### Training
 
 For training we use convolutional weights that are pre-trained YOLO on Imagenet. We use weights from the Extraction model, i.e. darknet19_448.conv.23. 
 Based on the paths to the various files, the command would be something like this: 
@@ -56,7 +56,7 @@ Based on the paths to the various files, the command would be something like thi
 
 <br> 
 
-Scope for possible errors
+#### Scope for possible errors
 
 - The dataset images size should be greater than or equal to 416x416 (which is the size of input images as used by Yolo cfg file). If it isn't the training will not give any b-boxes. It might also show nan and IOU will be very less due to this reason. In this case, the average loss will come down drastically but the model won't learn anything.
 - the annotations should be correct
@@ -68,7 +68,7 @@ Scope for possible errors
 
 <br>
 
-The function of each file in this repository:
+##### The function of each file in this repository:
 > - **test_sample_images** folder contains the test images 
 > - **bbox_to_yolo_format.py** file converts the annotations to the format desired by yolo
 > - **process.py** file creates the files train_dogs.txt and test_dogs.txt for training and validation data
