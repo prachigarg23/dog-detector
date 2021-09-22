@@ -3,34 +3,29 @@
 Created 2018
 
 To get Darknet YOLO training to work, we need the following files:
-> - Object bounding box file for each image (.txt)
-> - Class name file for all the category names (.names)
-> - Training dataset file for the list of training images (train.txt)
-> - Validating dataset file for the list of validating images (test.txt)
-> - Configuration file for YOLO neural network specification (.cfg)
-> - Data location file for finding all the data information (.data) 
+- Object bounding box file for each image (.txt)
+- Class name file for all the category names (.names)
+- Training dataset file for the list of training images (train.txt)
+- Validating dataset file for the list of validating images (test.txt)
+- Configuration file for YOLO neural network specification (.cfg)
+- Data location file for finding all the data information (.data) 
 
 <br>
 
 STEPS TO FOLLOW:
 1. Obtain the dataset - I created a dataset of 248 images of dogs and other random pictures.
-2. Use B-BOX LABELLING TOOL to label the dogs in the images and get annotations in the
-format: 
-> - [top-left-x] [top-left-y] [bottom-right-x] [bottom-right-y]
-3. YOLO needs the annotations the format:
-> - [object-class-id] [centre-x] [centre-y] [width] [height]
+2. Use B-BOX LABELLING TOOL to label the dogs in the images and get annotations in the format: `[top-left-x] [top-left-y] [bottom-right-x] [bottom-right-y]`
+3. YOLO needs the annotations the format: `[object-class-id] [centre-x] [centre-y] [width] [height]`
 4. Use the script convert.py to make the conversions.
 5. Now we need to split the dataset into train and validation sets and get the files:
-> - train_dogs.txt and test_dogs.txt, the process.py script does that with 10% data sent to
-validation set.
+- train_dogs.txt and test_dogs.txt, the process.py script does that with 10% data sent to validation set.
 6. Create a dog.names file containing the names of the classes, i.e. 'dog'
 7. Create a dog.data file containing:
 - classes = 1
 - train = path to train_dogs.txt file
 - valid = path to test_dogs.txt file
 - names = path to dog.names
-- backup = backup ([path] is where the intermediate .weights and final .weights files
-will be written)
+- backup = backup ([path] is where the intermediate .weights and final .weights files will be written)
 8. Creating the configuration (.cfg) file :
 Copy cfg/yolov2-voc.cfg into dogs.cfg and make suitable modifications :
 - The meaning of batch and subdivisions is how many mini batches you split
@@ -51,8 +46,7 @@ Other changes required are to the classes and filters specifications:
 <br>
 TRAINING
 For training we use convolutional weights that are pre-trained YOLO on Imagenet. We use weights from the Extraction model, i.e. darknet19_448.conv.23. 
-Based on the paths to the various files, the command would be something like this -
-`./darknet detector train cfg/dogs.data cfg/dogs.cfg darknet19_448.conv.23`
+Based on the paths to the various files, the command would be something like this: `./darknet detector train cfg/dogs.data cfg/dogs.cfg darknet19_448.conv.23`
 
 - Here we basically pass all the parameters (that the function train_detector requires). `train_detector()` is present in examples/detector.c/
 - similarly for testing, we pass the above parameters and pass the image file 
@@ -68,7 +62,6 @@ Scope For possible errors
 - if GPU available, use batch_size=64 with a specified subdivisions size.
 - if training on CPU, use batch_size=1
 
-<br>
 <br>
 The function of each file in this repository:
 > - **test_sample_images** folder contains the test images 
