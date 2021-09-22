@@ -44,10 +44,10 @@ Other changes required are to the classes and filters specifications:
 - in line 244 change number of classes to 1
 
 <br>
+
 TRAINING
 For training we use convolutional weights that are pre-trained YOLO on Imagenet. We use weights from the Extraction model, i.e. darknet19_448.conv.23. 
-Based on the paths to the various files, the command would be something like this: 
-.`/darknet detector train cfg/dogs.data cfg/dogs.cfg darknet19_448.conv.23`
+Based on the paths to the various files, the command would be something like this: `./darknet detector train cfg/dogs.data cfg/dogs.cfg darknet19_448.conv.23`
 
 - Here we basically pass all the parameters (that the function train_detector requires). `train_detector()` is present in examples/detector.c/
 - similarly for testing, we pass the above parameters and pass the image file 
